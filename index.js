@@ -7,13 +7,15 @@ const { getUsers, createUser } = require("./queries/user.queries");
 
 app.use(bodyParser.json());
 
+require('dotenv').config();
+
 const config = {
   authRequired: false,
   auth0Logout: true,
-  baseURL: 'http://localhost:3000',
-  clientID: '4xTLaixh8hxWWxdCzlE1NP3tTYlhKkfN',
-  issuerBaseURL: 'https://dev-onyfbauj3gubi6i8.us.auth0.com',
-  secret: 'LONG_RANDOM_STRING'
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+  secret: process.env.SECRET
 };
 
 // The `auth` router attaches /login, /logout
